@@ -20,7 +20,7 @@ Route::get('/products' , function () {
     return view('product');
 })->name('products');
 
-Route::get('/operator', [ProductController::class, 'index'])->name('operator');
-// Route::middleware(['auth', 'role:2'])->group(function () {
-    
-// });
+Route::middleware(['auth', 'role:2'])->group(function () {
+    Route::get('/operator', [ProductController::class, 'index'])->name('operator');
+
+});
