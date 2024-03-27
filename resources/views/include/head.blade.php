@@ -15,6 +15,10 @@
           @auth
               @if (auth()->user()->role_id == 2)
                   <a href="{{ route('operator') }}" class="nav-item nav-link">Manage Product</a>
+                @elseif(auth()->user()->role_id == 1)
+                  <a href="{{ route('dashboard' )}}" class="nav-item nav-link">Dashboard</a>
+              @else
+                  <a href="" class="nav-item nav-link">khara</a>
               @endif
           @endauth
       </div>

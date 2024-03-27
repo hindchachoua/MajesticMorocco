@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthManager;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StatistiqueController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,5 +24,12 @@ Route::get('/products' , function () {
 
 Route::middleware(['auth', 'role:2'])->group(function () {
     Route::get('/operator', [ProductController::class, 'index'])->name('operator');
+    Route::get('/addproduct', [ProductController::class,'create'])->name('addproduct');
+    Route::get('/editProduct', [ProductController::class, 'edit'])->name('editproduct');
+});
 
+Route::middleware(['auth', 'role:1'])->group(function () {
+    Route::get('/dashboard', [StatistiqueController::class, 'dashboard'])->name('dashboard');
+    Route::get('/categories', [CategorieController::class, 'index'])->name('categories');
+    Route::get('/addcategorie', [CategorieController::class, 'create'])->name('addcategorie');
 });

@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('operator.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('operator.edit');
     }
 
     /**

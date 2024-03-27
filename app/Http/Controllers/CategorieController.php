@@ -12,7 +12,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.categorie.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categorie.create');
     }
 
     /**

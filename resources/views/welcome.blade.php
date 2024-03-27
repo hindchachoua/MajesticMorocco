@@ -57,7 +57,7 @@
             </div>
             <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.5s">
                 <div class="fact-item bg-light rounded text-center h-100 p-5">
-                    <i class="fa fa-bread-slice fa-4x text-primary mb-4"></i>
+                    <i class="fa fa-certificate fa-4x text-primary mb-4"></i>
                     <p class="mb-2">Total Products</p>
                     <h1 class="display-5 mb-0" data-toggle="counter-up">135</h1>
                 </div>
