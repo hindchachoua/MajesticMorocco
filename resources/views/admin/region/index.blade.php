@@ -11,18 +11,18 @@
     <div class="col-md-9">
         <div class="container-fluid page-header py-3 wow fadeIn" data-wow-delay="0.1s" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
             <div class="container text-center pt-5 pb-3">
-                <h1 class="display-4 text-white animated slideInDown mb-3">Manage Categorie</h1>
+                <h1 class="display-4 text-white animated slideInDown mb-3">Manage Regions</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     
                 </nav>
             </div>
         </div>
         <div class="container-fluid px-4">
-            <a href="{{ route('addcategorie')}}" class="btn btn-primary wow fadeInUp">Add Categorie</a>
+            <a href="{{ route('addregion')}}" class="btn btn-primary wow fadeInUp">Add Region</a>
 <div class="container-fluid px-4" style="width: 800px; height: 300px;margin-top: 15px">
     <div class="bg-white text-center rounded p-4 wow fadeInUp">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">All Categories</h6>
+            <h6 class="mb-0">All Regions</h6>
         </div>
         <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-5">

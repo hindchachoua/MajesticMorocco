@@ -19,8 +19,8 @@
                 </div> --}}
             </div>
             <a href="{{route('categories')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Manage Categories</a>
-            <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Manage Regions</a>
-            <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Manage Orders</a>
+            <a href="{{route('region')}}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Manage Regions</a>
+            <a href="{{route('cancel')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Manage Orders</a>
             <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Validation</a>
             <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Access</a>
             <div class="nav-item dropdown">

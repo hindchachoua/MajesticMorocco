@@ -11,7 +11,7 @@
     <div class="col-md-9">
         <div class="container-fluid page-header py-3 wow fadeIn" data-wow-delay="0.1s" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
             <div class="container text-center pt-5 pb-3">
-                <h1 class="display-4 text-white animated slideInDown mb-3">Add Categorie</h1>
+                <h1 class="display-4 text-white animated slideInDown mb-3">Add Region</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     
                 </nav>
@@ -21,7 +21,7 @@
             <form action="" method="POST">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput" name="name" placeholder="">
-                    <label for="floatingInput">Name of categorie</label>
+                    <label for="floatingInput">Name of region</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
             </form> 

@@ -36,7 +36,7 @@ class OrderController extends Controller
      */
     public function show(order $order)
     {
-        //
+        return view('admin.order.show');
     }
 
     /**
@@ -61,5 +61,9 @@ class OrderController extends Controller
     public function destroy(order $order)
     {
         //
+    }
+
+    public function cancel(){
+        return view('admin.order.cancel');
     }
 }

@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\StatistiqueController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,4 +34,10 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::get('/dashboard', [StatistiqueController::class, 'dashboard'])->name('dashboard');
     Route::get('/categories', [CategorieController::class, 'index'])->name('categories');
     Route::get('/addcategorie', [CategorieController::class, 'create'])->name('addcategorie');
+    Route::get('/region', [RegionController::class, 'index'])->name('region');
+    Route::get('/addregion', [RegionController::class, 'create'])->name('addregion');
+
+    Route::get('/cancelOrder', [OrderController::class, 'cancel'])->name('cancel');
+
+    Route::get('/order', [OrderController::class, 'show'])->name('showOrder');
 });
