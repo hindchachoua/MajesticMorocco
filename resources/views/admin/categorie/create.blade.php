@@ -18,9 +18,10 @@
             </div>
         </div>
         <div class="container-fluid px-4"  style="width: 800px;">
-            <form action="" method="POST">
+            <form action="{{ route('categorieadd') }}" method="POST">
+                @csrf
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" name="name" placeholder="">
+                    <input type="text" class="form-control" id="namz_cat" name="name_cat" placeholder="">
                     <label for="floatingInput">Name of categorie</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>

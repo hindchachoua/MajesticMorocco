@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="container-fluid px-4">
-            <a href="{{ route('addcategorie')}}" class="btn btn-primary wow fadeInUp">Add Categorie</a>
+            <a href="{{ route('categorie.add')}}" class="btn btn-primary wow fadeInUp">Add Categorie</a>
 <div class="container-fluid px-4" style="width: 800px; height: 300px;margin-top: 15px">
     <div class="bg-white text-center rounded p-4 wow fadeInUp">
         <div class="d-flex align-items-center justify-content-between mb-4">
@@ -34,13 +34,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {{-- <td></td> --}}
-                        <td>01 Jan 2045</td>
-                        <td><a class="btn btn-sm btn-primary" href="">Edit</a>
-                            <a class="btn btn-sm btn-primary" href="">Delete</a>
+                    
+                        @foreach($categories as $categorie)
+                        {{-- <td></td> --}}<tr>
+                        <td>{{ $categorie->name }}</td>
+                        <td><a class="btn btn-sm btn-primary" href="{{ route('categorie.edit', $categorie->id)}}">Edit</a>
+                            <form action="{{ route('categorie.destroy', $categorie->id)}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-primary" >
+                                    Delete
+                                </button>
+                            </form>
                         </td>
                     </tr>
+                        @endforeach
+                    
                     
                 </tbody>
             </table>

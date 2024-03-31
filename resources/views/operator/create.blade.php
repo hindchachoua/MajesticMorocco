@@ -6,7 +6,8 @@
     <h1 class="display-4 mb-4 animated slideInDown text-center">Create product</h1>
 
 <div class=" rounded h-100 p-4" style="background-color: #1E1916; width: 800px; height: 800px; margin: auto">
-    <form action="" method="POST">
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
     <div class="form-floating mb-3">
         <input type="text" class="form-control" id="floatingInput" name="title" placeholder="">
         <label for="floatingInput">Title</label>
@@ -27,24 +28,28 @@
         <label >Available products</label>
     </div>
     <div class="form-floating mb-3">
-        <select class="form-select" id="floatingSelect"
-            aria-label="Floating label select example">
-            <option selected>Categorie</option>
-            <option value="1">One</option>
+        
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="category_id">
+            <option selected disabled>Categorie</option>
+            @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
         </select>
-        <select class="form-select" id="floatingSelect"
-            aria-label="Floating label select example">
-            <option selected>Region</option>
-            <option value="1">One</option>
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="region_id">
+            <option selected disabled>Region</option>
+            @foreach($regions as $region)
+                <option value="{{$region->id}}">{{$region->name}}</option>
+            @endforeach
         </select>
+        
     </div>
     <div class="mb-3">
         <label for="formFile" class="form-label">Image</label>
-        <input class="form-control bg-dark" type="file" id="formFile" name='image'>
+        <input class="form-control bg-dark" type="file" id="formFile" name="image">
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="0" id="flexCheckDefault" name='manual'>
-        <label class="form-check-label" for="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="0" name='is_Auto'>
+        <label class="form-check-label" for="is_Auto">
             Manual
         </label>
     </div>

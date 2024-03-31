@@ -34,14 +34,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($regions as $region)
                     <tr>
                         {{-- <td></td> --}}
-                        <td>01 Jan 2045</td>
-                        <td><a class="btn btn-sm btn-primary" href="">Edit</a>
-                            <a class="btn btn-sm btn-primary" href="">Delete</a>
+                        <td>{{ $region->name }}</td>
+                        <td><a class="btn btn-sm btn-primary" href="{{  route('region.edit', $region->id)}}">Edit</a>
+                            <form action="{{route('region.destroy', $region->id)}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-primary">Delete</button>
+                            </form>
                         </td>
                     </tr>
-                    
+                    @endforeach
                 </tbody>
             </table>
         </div>

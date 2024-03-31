@@ -12,7 +12,8 @@ class RegionController extends Controller
      */
     public function index()
     {
-        return view('admin.region.index');
+        $regions = region::all();
+        return view('admin.region.index', compact('regions'));
     }
 
     /**
@@ -28,7 +29,14 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name_region' => 'required',
+        ]);
+
+        $region = new region();
+        $region->name = $request->name_region;
+        $region->save();
+        return redirect('/region');
     }
 
     /**
@@ -42,24 +50,34 @@ class RegionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(region $region)
+    public function edit($id)
     {
-        //
+        $region = region::findOrFail($id);
+        return view('admin.region.edit', compact('region'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, region $region)
+    public function update(Request $request, $id)
     {
-        //
+        $region = region::findOrFail($id);
+        $region->update([
+            'name' => $request->input('name_region'),
+
+        ]);
+    
+        return redirect('/region')->with('success', 'Region updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(region $region)
+    public function destroy($id)
     {
-        //
+        $region = region::findOrFail($id);
+        $region->delete();
+
+        return redirect('/region')->with('success', 'Region deleted successfully');
     }
 }

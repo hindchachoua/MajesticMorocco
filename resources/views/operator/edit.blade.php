@@ -8,7 +8,7 @@
 <div class=" rounded h-100 p-4" style="background-color: #1E1916; width: 800px; height: 800px; margin: auto">
     <form action="" method="POST">
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" name="title" placeholder="">
+        <input type="text" class="form-control" id="floatingInput" name="title" value="{{$product->title}}">
         <label for="floatingInput">Title</label>
     </div>
     <div class="form-floating mb-3">
@@ -27,15 +27,17 @@
         <label >Available products</label>
     </div>
     <div class="form-floating mb-3">
-        <select class="form-select" id="floatingSelect"
-            aria-label="Floating label select example">
-            <option selected>Categorie</option>
-            <option value="1">One</option>
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="category_id">
+            <option selected disabled>Categorie</option>
+            @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
         </select>
-        <select class="form-select" id="floatingSelect"
-            aria-label="Floating label select example">
-            <option selected>Region</option>
-            <option value="1">One</option>
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="region_id">
+            <option selected disabled>Region</option>
+            @foreach($regions as $region)
+                <option value="{{$region->id}}">{{$region->name}}</option>
+            @endforeach
         </select>
     </div>
     <div class="mb-3">

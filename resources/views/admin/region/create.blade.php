@@ -18,9 +18,10 @@
             </div>
         </div>
         <div class="container-fluid px-4"  style="width: 800px;">
-            <form action="" method="POST">
+            <form action="{{ route('regionadd') }}" method="POST">
+                @csrf
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" name="name" placeholder="">
+                    <input type="text" class="form-control" id="floatingInput" name="name_region" placeholder="">
                     <label for="floatingInput">Name of region</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
