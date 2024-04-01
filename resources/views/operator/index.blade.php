@@ -16,7 +16,7 @@
     </div>
 </div>
 <!-- Page Header End -->
-    <div>
+    <div style="margin-top: -120px">
          <!-- Team Start -->
     <div class="container-xxl py-6">
         
@@ -30,7 +30,11 @@
                 @foreach($products as $product)
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item text-center rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('storage/app/public/images/' . $product->image) }}" alt="">
+                        <a href="{{ route('product.show', ['id' => $product->id]) }}">
+                            <img class="img-fluid" src="{{ asset('storage/images/produits-locals.jpg') }}" alt="">
+                        </a>
+                        
+
                         <div class="team-text">
                             <div class="team-title">
                                 <h5>{{$product->title}}</h5>
@@ -38,7 +42,11 @@
                             </div>
                             <div class="team-social">
                                 <a class="btn btn-square btn-light rounded-circle" href="{{ route('product.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-square btn-light rounded-circle" href=""><i class="fas fa-trash-alt"></i></a>
+                                <form action="{{ route('product.destroy', $product->id)}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-square btn-light rounded-circle" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>

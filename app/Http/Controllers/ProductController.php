@@ -72,9 +72,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::find($id);
+        return view('operator.show', compact('product'));
     }
 
     /**
@@ -93,14 +94,44 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // Find the product by its ID
+        $product = Product::find($request->id);
+    
+        // Retrieve the current values from the database if the incoming request values are null
+        $image = $request->image ?? $product->image;
+        $category_id = $request->category_id ?? $product->category_id;
+        $region_id = $request->region_id ?? $product->region_id;
+
+        if ($request->has('is_Auto')) {
+            $is_Auto = 1;
+        } else {
+            $is_Auto = 0;
+        }
+        
+        $product->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'available_products' => $request->available_products,
+            'region_id' => $region_id,
+            'category_id' => $category_id,
+            'is_Auto' => $is_Auto, // Set using if-else statement
+            'image' => $image
+        ]);
+    
+        // Redirect back with success message
+        return redirect('/operator')->with('success', 'Product updated successfully.');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product, $id)
     {
-        //
+        $prosuct = Product::findOrFail($id);
+        $prosuct->delete();
+
+        return redirect('/operator')->with('success', 'Product deleted successfully');
     }
 }

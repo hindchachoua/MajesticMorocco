@@ -29,6 +29,10 @@ Route::middleware(['auth', 'role:2'])->group(function () {
     Route::get('/addproduct', [ProductController::class,'create'])->name('addproduct');
     Route::post('/addproduct', [ProductController::class,'store'])->name('product.store');
     Route::get('/editProduct/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::put('/updateProduct/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('/operator/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('/showproduct/{id}', [ProductController::class, 'show'])->name('product.show');
+
 });
 
 Route::middleware(['auth', 'role:1'])->group(function () {
