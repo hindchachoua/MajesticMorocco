@@ -19,7 +19,7 @@
                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2 text-white">Categories:</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <h6 class="mb-0">{{ $categoriesCount }}</h6>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2 text-white">Products</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <h6 class="mb-0">{{ $productsCount}}</h6>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2 text-white">Clients</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <h6 class="mb-0">{{$clients}}</h6>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2 text-white">Operators</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <h6 class="mb-0">{{$operators}}</h6>
                 </div>
             </div>
         </div>

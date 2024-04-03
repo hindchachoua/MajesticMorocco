@@ -58,6 +58,11 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 
     //orders
     Route::get('/cancelOrder', [OrderController::class, 'cancel'])->name('cancel');
-
     Route::get('/order', [OrderController::class, 'show'])->name('showOrder');
+
+    //access
+    Route::get('/accessuser', [AuthManager::class, 'indexAccessUser'])->name('access.user');
+    Route::get('/accessoperator', [AuthManager::class, 'indexAccessOperator'])->name('access.operator');
+    Route::patch('/blockUser/{userId}', [AuthManager::class, 'blockUser'])->name('blockUser');
+
 });

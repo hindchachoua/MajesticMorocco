@@ -9,21 +9,21 @@ use Illuminate\Support\Facades\Session;
 
 class AuthManager extends Controller
 {
-    function login(){
+    public function login(){
         if(Auth::check()){
             return redirect("/")->with('error', 'Login details are not valid');
         } 
         return view('Auth.login');
     }
 
-    function register(){
+    public function register(){
         if(Auth::check()){
             return redirect("/")->with('error', 'Login details are not valid');
         } 
         return view('Auth.register');
     }
 
-    function loginPost(Request $request){
+    public function loginPost(Request $request){
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -36,7 +36,7 @@ class AuthManager extends Controller
         return redirect("login")->with('error', 'Login details are not valid');
     }
 
-    function registerPost(Request $request){
+    public function registerPost(Request $request){
         
         $request->validate([
             'name' => 'required',
@@ -57,9 +57,29 @@ class AuthManager extends Controller
         return redirect("login")->with('success', 'You have successfully logged in');
     }
 
-    function logout(){
+    public function logout(){
         Session::flush();
         Auth::logout();
         return redirect('/');
     }
+
+    public function indexAccessUser(User $user){
+        $users = User::all()->whereIn('role_id', 3);
+        return view('admin.client.accessUser', compact('users'));
+    }
+    public function indexAccessOperator(User $user){
+        $operators = User::all()->whereIn('role_id', 2);
+        return view('admin.client.accessOperator', compact('operators'));
+    }
+    public function blockUser(Request $request, $userId)
+    {
+        $user = User::findOrFail($userId);
+    
+        // Toggle the is_blocked status
+        $user->is_blocked = !$user->is_blocked;
+        $user->save();
+    
+        return redirect()->back()->with('success', 'User blocked/unblocked successfully');
+    }
+
 }
