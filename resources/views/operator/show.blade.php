@@ -12,7 +12,7 @@
     </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class=" text-center rounded overflow-hidden">
-                        <a href="{{ route('product.show', $product->id)}}"><img class="img-fluid" src="{{asset('storage/images/produits-locals.jpg')}}" alt=""></a>
+                        <img class="img-fluid" src="{{ asset('images/' . $product->image)}}" alt="">
 
                         <div class="team-text">
                             <div class="team-title">

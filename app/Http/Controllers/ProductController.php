@@ -15,9 +15,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = product::all();
+        $products = Product::where('user_id', Auth::user()->id)
+                            ->where('is_valid', 1)
+                            ->get();
+    
         return view('operator.index', compact('products'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -43,19 +47,20 @@ class ProductController extends Controller
             'category_id' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-         // Handle file upload
-         if ($request->hasFile('image')) {
+        
+        // Handle file upload
+        if ($request->hasFile('image')) {
             $fileNameWithExt = $request->file('image')->getClientOriginalName();
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+            // Move the uploaded file to the public directory
+            $request->file('image')->move(public_path('images'), $fileNameToStore);
         } else {
-            $fileNameToStore = 'noimage.jpg'; // Default image if no image is uploaded
+            $fileNameToStore = 'produits-locals.jpg'; // Default image if no image is uploaded
         }
-
-
-        $product = new product();
+    
+        $product = new Product();
         $product->title = $request->title;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -66,8 +71,10 @@ class ProductController extends Controller
         $product->is_Auto = $request->has('is_Auto') ? 0 : 1;
         $product->user_id = Auth::user()->id;
         $product->save();
+        
         return redirect('/operator')->with('success', 'Product added successfully.');
     }
+    
 
     /**
      * Display the specified resource.
@@ -133,5 +140,22 @@ class ProductController extends Controller
         $prosuct->delete();
 
         return redirect('/operator')->with('success', 'Product deleted successfully');
+    }
+
+    public function products(){
+        $products = Product::all()->where('is_Valid', 0);
+        return view('admin.product.validate', compact('products'));
+    }
+
+    public function validation($id){
+        $product = Product::find($id);
+        $product->is_Valid = 1;
+        $product->save();
+        return redirect('/validation');
+    }
+
+    public function displayProduct(){
+        $products = Product::all()->where('is_Valid', 1);
+        return view('client.product', compact('products'));
     }
 }

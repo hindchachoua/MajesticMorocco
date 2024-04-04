@@ -10,7 +10,6 @@
         
           <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
           <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
-          <a href="{{ route('products') }}" class="nav-item nav-link">Products</a>
           
           @auth
               @if (auth()->user()->role_id == 2)
@@ -18,7 +17,7 @@
                 @elseif(auth()->user()->role_id == 1)
                   <a href="{{ route('dashboard' )}}" class="nav-item nav-link">Dashboard</a>
               @else
-                  <a href="" class="nav-item nav-link">khara</a>
+              <a href="{{ route('products') }}" class="nav-item nav-link">Products</a>
               @endif
           @endauth
       </div>

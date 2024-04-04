@@ -122,7 +122,7 @@
            
         </div>
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <p class="text-primary text-uppercase mb-2">// Bakery Products</p>
+            <p class="text-primary text-uppercase mb-2">// Our Products</p>
             <h1 class="display-6 mb-4">Explore The Categories Of Our Cultural Products</h1>
         </div>
         <div class="row g-4">

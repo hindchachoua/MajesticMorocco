@@ -31,7 +31,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item text-center rounded overflow-hidden">
                         <a href="{{ route('product.show', ['id' => $product->id]) }}">
-                            <img class="img-fluid" src="{{ asset('storage/images/produits-locals.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('images/' . $product->image)}}" alt="">
                         </a>
                         
 

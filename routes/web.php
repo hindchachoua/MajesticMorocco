@@ -20,9 +20,7 @@ Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 Route::get('/about' , function () {
     return view('about');
 })->name('about');
-Route::get('/products' , function () {
-    return view('product');
-})->name('products');
+
 
 Route::middleware(['auth', 'role:2'])->group(function () {
     Route::get('/operator', [ProductController::class, 'index'])->name('operator');
@@ -65,4 +63,16 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::get('/accessoperator', [AuthManager::class, 'indexAccessOperator'])->name('access.operator');
     Route::patch('/blockUser/{userId}', [AuthManager::class, 'blockUser'])->name('blockUser');
 
+    //validation
+    Route::get('/validation', [ProductController::class, 'products'])->name('products');
+    Route::put('/validation/{id}', [ProductController::class, 'validation'])->name('validation');
+
+});
+
+
+Route::middleware('auth', 'role:3')->group(function () {
+    Route::get('/products', [ProductController::class, 'displayProduct'])->name('products');
+
+    Route::get('/showproduct/{id}', [ProductController::class, 'show'])->name('product.show');
+    Route::post('/user/reserve/{product}', [OrderController::class, 'reserve'])->name('user.reserve');
 });
