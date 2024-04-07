@@ -4,8 +4,10 @@
 <div style="margin-top: 200px">
 
     <h1 class="display-4 mb-4 animated slideInDown text-center">Create product</h1>
-
-<div class=" rounded h-100 p-4" style="background-color: #1E1916; width: 800px; height: 800px; margin: auto">
+    <div id="success-alert" class="alert alert-success" style="display: none;">
+        Product created successfully!
+    </div>
+<div class=" rounded h-100 p-4 mb-5" style="background-color: #1E1916; width: 800px; height: 800px; margin: auto">
     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-floating mb-3">

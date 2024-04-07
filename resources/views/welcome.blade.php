@@ -188,7 +188,7 @@
                     <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                         <div class="d-flex align-items-center mb-3">
                             <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-bread-slice text-white"></i>
+                                <i class="fa fa-cart-plus text-white"></i>
                             </div>
                             <h5 class="mb-0">Quality Products</h5>
                         </div>

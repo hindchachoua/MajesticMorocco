@@ -72,7 +72,7 @@ class ProductController extends Controller
         $product->user_id = Auth::user()->id;
         $product->save();
         
-        return redirect('/operator')->with('success', 'Product added successfully.');
+        return redirect('/addproduct')->with('success', 'Product added successfully.');
     }
     
 

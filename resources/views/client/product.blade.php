@@ -45,6 +45,7 @@
                         
                     </div>
                 </div>
+                <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">{{$product->available_products}}</div>
                 @if ($product->available_products == 0)
                         <p class="alert alert-danger" style="font-family: 'Times New Roman', Times, serif">No available Products</p>
                                         
@@ -52,10 +53,12 @@
     
                         <form action="{{ route('user.reserve', $product->id) }}" method="POST">
                           @csrf
+                          <div class="bg-white text-center rounded p-4">
                           <input type="number" name="num_products" id="num_product">
                           <input type="hidden" name="product_id" value="{{ $product->id }}">
-                          <button type="submit" class="btn" style="background-color:#ee5007; color: white">Buy Product</button>
+                          <button type="submit" class="btn btn-primary">Buy Product</button>
                       </form>
+                    </div>
                       @endif
             </div>
             @endforeach

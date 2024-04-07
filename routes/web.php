@@ -64,7 +64,7 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::patch('/blockUser/{userId}', [AuthManager::class, 'blockUser'])->name('blockUser');
 
     //validation
-    Route::get('/validation', [ProductController::class, 'products'])->name('products');
+    Route::get('/validation', [ProductController::class, 'products'])->name('products.validation');
     Route::put('/validation/{id}', [ProductController::class, 'validation'])->name('validation');
 
 });
