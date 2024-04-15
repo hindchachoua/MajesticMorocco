@@ -19,39 +19,42 @@
         </div>
         <div class="container-fluid px-4">
             <a href="{{ route('addregion')}}" class="btn btn-primary wow fadeInUp">Add Region</a>
-<div class="container-fluid px-4" style="width: 800px; height: 300px;margin-top: 15px">
-    <div class="bg-white text-center rounded p-4 wow fadeInUp">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">All Regions</h6>
-        </div>
-        <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-5">
-                <thead>
-                    <tr class="text-white">
-                        {{-- <th scope="col"></th> --}}
-                        <th scope="col" style="color: #573100">Name</th>
-                        <th scope="col" style="color: #573100">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($regions as $region)
-                    <tr>
-                        {{-- <td></td> --}}
-                        <td>{{ $region->name }}</td>
-                        <td><a class="btn btn-sm btn-primary" href="{{  route('region.edit', $region->id)}}">Edit</a>
-                            <form action="{{route('region.destroy', $region->id)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-sm btn-primary">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+            <div class="container-fluid px-4" style="margin-top: 15px">
+                <div class="bg-white text-center rounded p-4 wow fadeInUp">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">All Regions</h6>
+                    </div>
+                    <!-- Add table-responsive class here -->
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-5">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col" style="color: #573100">Name</th>
+                                    <th scope="col" style="color: #573100">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($regions as $region)
+                                    <tr>
+                                        <td>{{ $region->name }}</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" href="{{ route('region.edit', $region->id) }}">Edit</a>
+                                            <form action="{{ route('region.destroy', $region->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-sm btn-primary">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
 </div>
 </div>
 </div>

@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="py-5" style="margin-left: 500px">
-                <div class="col-md-6 wow fadeInUp bg-light " data-wow-delay="0.1s">
+                <div class="col-md-6 wow fadeInUp bg-light shadow p-5" data-wow-delay="0.1s">
                     <div class=" text-center rounded overflow-hidden">
                         <img class="img-fluid" src="{{ asset('images/' . $product->image)}}" alt="">
 

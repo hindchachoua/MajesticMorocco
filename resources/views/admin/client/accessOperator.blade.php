@@ -19,43 +19,43 @@
         </div>
         <div class="container-fluid px-4">
             
-<div class="container-fluid px-4" style="width: 800px; height: 300px;margin-top: 15px">
-    <div class="bg-white text-center rounded p-4 wow fadeInUp">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">All Operators</h6>
-        </div>
-        <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-5">
-                <thead>
-                    <tr class="text-white">
-                        {{-- <th scope="col"></th> --}}
-                        <th scope="col" style="color: #573100">Name</th>
-                        <th scope="col" style="color: #573100">Email</th>
-                        <th scope="col" style="color: #573100">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($operators as $operator)
-                    <tr class="text-white">
-                        {{-- <th scope="col"></th> --}}
-                        <th scope="col" style="color: #573100">{{ $operator->name }}</th>
-                        <th scope="col" style="color: #573100">{{ $operator->email }}</th>
-                        <th scope="col">
-                            <form action="{{ route('blockUser', $operator->id) }}" method="POST">
-                                @csrf
-                                @method('PATCH')
-                                <button type="submit" class="btn btn-{{ $operator->is_blocked ? 'success' : 'danger' }}">
-                                    {{ $operator->is_blocked ? 'Unblock' : 'Block' }}
-                                </button>
-                            </form>
-                        </th>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+            <div class="container-fluid px-4" style="margin-top: 15px">
+                <div class="bg-white text-center rounded p-4 wow fadeInUp">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">All Operators</h6>
+                    </div>
+                    <!-- Add table-responsive class here -->
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-5">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col" style="color: #573100">Name</th>
+                                    <th scope="col" style="color: #573100">Email</th>
+                                    <th scope="col" style="color: #573100">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($operators as $operator)
+                                    <tr>
+                                        <td>{{ $operator->name }}</td>
+                                        <td>{{ $operator->email }}</td>
+                                        <td>
+                                            <form action="{{ route('blockUser', $operator->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-{{ $operator->is_blocked ? 'success' : 'danger' }}">
+                                                    {{ $operator->is_blocked ? 'Unblock' : 'Block' }}
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
 </div>
 </div>
 </div>

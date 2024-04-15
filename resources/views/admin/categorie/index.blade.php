@@ -19,43 +19,41 @@
         </div>
         <div class="container-fluid px-4">
             <a href="{{ route('categorie.add')}}" class="btn btn-primary wow fadeInUp">Add Categorie</a>
-<div class="container-fluid px-4" style="width: 800px; height: 300px;margin-top: 15px">
-    <div class="bg-white text-center rounded p-4 wow fadeInUp">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">All Categories</h6>
-        </div>
-        <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-5">
-                <thead>
-                    <tr class="text-white">
-                        {{-- <th scope="col"></th> --}}
-                        <th scope="col" style="color: #573100">Name</th>
-                        <th scope="col" style="color: #573100">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                        @foreach($categories as $categorie)
-                        {{-- <td></td> --}}<tr>
-                        <td>{{ $categorie->name }}</td>
-                        <td><a class="btn btn-sm btn-primary" href="{{ route('categorie.edit', $categorie->id)}}">Edit</a>
-                            <form action="{{ route('categorie.destroy', $categorie->id)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-sm btn-primary" >
-                                    Delete
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                        @endforeach
-                    
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+            <div class="container-fluid px-4" style="margin-top: 15px">
+                <div class="bg-white text-center rounded p-4 wow fadeInUp">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">All Categories</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-5">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col" style="color: #573100">Name</th>
+                                    <th scope="col" style="color: #573100">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($categories as $categorie)
+                                    <tr>
+                                        <td>{{ $categorie->name }}</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" href="{{ route('categorie.edit', $categorie->id) }}">Edit</a>
+                                            <form action="{{ route('categorie.destroy', $categorie->id) }}" method="POST" style="display:inline-block;">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-sm btn-primary">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
 </div>
 </div>
 </div>
