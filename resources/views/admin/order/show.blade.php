@@ -1,6 +1,6 @@
 @extends('layout.layout3')
 @section('content')
-<div class="container-fluid">
+<div>
     <div class="row">
     <!-- Sidebar -->
     <div class="col-md-3">

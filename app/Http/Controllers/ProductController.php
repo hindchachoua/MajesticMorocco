@@ -108,12 +108,24 @@ class ProductController extends Controller
         $image = $request->image ?? $product->image;
         $category_id = $request->category_id ?? $product->category_id;
         $region_id = $request->region_id ?? $product->region_id;
+        $is_Auto = $request->boolean('is_Auto') ? 1 : 0;
+       
+        if ($request->hasFile('image')) {
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            // Move the uploaded file to the public directory
+            $request->file('image')->move(public_path('images'), $fileNameToStore);
+        } 
 
-        if ($request->has('is_Auto')) {
-            $is_Auto = 1;
-        } else {
-            $is_Auto = 0;
-        }
+        // if ($request->has('is_Auto')) {
+        //     $request->value('is_Auto', 1);
+        //     $is_Auto = 1;
+        // } else {
+        //     $request->value('is_Auto', 0);
+        //     $is_Auto = 0;
+        // }
         
         $product->update([
             'title' => $request->title,
@@ -122,8 +134,8 @@ class ProductController extends Controller
             'available_products' => $request->available_products,
             'region_id' => $region_id,
             'category_id' => $category_id,
-            'is_Auto' => $is_Auto, // Set using if-else statement
-            'image' => $image
+            'is_Auto' => $is_Auto, 
+            'image' => $fileNameToStore
         ]);
     
         // Redirect back with success message

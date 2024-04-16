@@ -1,7 +1,7 @@
 @extends('layout.layout3')
 @section('content')
 
-<div class="container-fluid">
+<div >
     <div class="row">
     <!-- Sidebar -->
     <div class="col-md-3">
@@ -19,7 +19,7 @@
         </div>
         <div class="container-fluid px-4">
             <a href="{{ route('categorie.add')}}" class="btn btn-primary wow fadeInUp">Add Categorie</a>
-            <div class="container-fluid px-4" style="margin-top: 15px">
+            <div class="container-fluid px-4">
                 <div class="bg-white text-center rounded p-4 wow fadeInUp">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">All Categories</h6>
