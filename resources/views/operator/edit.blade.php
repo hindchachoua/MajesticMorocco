@@ -4,7 +4,9 @@
 <div style="margin-top: 200px">
 
     <h1 class="display-4 mb-4 animated slideInDown text-center">Edit product</h1>
-
+    <div id="success-alert" class="alert alert-success" style="display: none;">
+        Product edited successfully!
+    </div>
 <div class=" rounded h-100 p-4" style="background-color: #1E1916; width: 800px; height: 800px; margin: auto">
     <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
 
@@ -49,15 +51,15 @@
         <input class="form-control bg-dark" type="file" id="image" name='image'>
     </div>
     <div class="form-check">
-        {{-- @if($product->is_Auto==1)
+        @if($product->is_Auto==1)
             <input class="form-check-input" type="checkbox" value="0" name='is_Auto'>
             <label class="form-check-label" for="is_Auto">Auto</label>
         @else
         <input class="form-check-input" type="checkbox" value="1" name='is_Auto'>
             <label class="form-check-label" for="is_Auto">Manual</label>
-        @endif --}}
-        <input class="form-check-input" type="checkbox" name="is_Auto" value="1" @if($product->is_Auto==1) checked @endif>
-<label class="form-check-label" for="is_Auto">Auto</label>
+        @endif
+        {{-- <input class="form-check-input" type="checkbox" name="is_Auto" value="1" @if($product->is_Auto==1) checked @endif>
+<label class="form-check-label" for="is_Auto">Auto</label> --}}
         
     </div>
     <button type="submit" class="btn btn-primary mt-3">Edit</button>

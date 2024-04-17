@@ -16,6 +16,7 @@
                     <a href="{{ route('dashboard' )}}" class="nav-item nav-link">Dashboard</a>
                 @else
                     <a href="{{ route('products') }}" class="nav-item nav-link">Products</a>
+                    <a href="{{ route('history')}}" class="nav-item nav-link">History</a>                
                 @endif
             @endauth
         </div>

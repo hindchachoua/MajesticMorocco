@@ -31,7 +31,7 @@
 
     <title>@yield('title')</title>
   </head>
-  <body>
+  <body style="overflow-x: hidden">
     @include('include.head')
     @yield('content')
 
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

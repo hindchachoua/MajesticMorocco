@@ -31,7 +31,7 @@
 
     <title>@yield('title')</title>
   </head>
-  <body>
+  <body style="overflow-x: hidden">
 @yield('content')
 @include('include.footer')
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script> --}}

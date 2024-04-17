@@ -20,40 +20,56 @@ class OrderController extends Controller
 
     public function reserve(Product $product, Request $request)
     {
-        // Retrieve the authenticated user
         $user = Auth::user();
     
-        // Validate the incoming request data
+        // Validate the request data
         $request->validate([
-            'num_products' => 'required|integer|min:1', // Assuming num_products is required and should be an integer greater than 0
+            'num_products' => 'required|integer|min:1',
         ]);
     
-        // Check if requested quantity is available
+        // Check if the requested quantity is available
         if ($product->available_products < $request->input('num_products')) {
             return redirect()->back()->with('error', 'Requested quantity exceeds available products.');
         }
     
-        // Create a new order instance and associate it with the user
+        // Create a new order for the user
         $order = new Order([
             'num_products' => $request->input('num_products'),
-            'status' => 1, // Assuming the initial status is pending
+            'status' => 1, // Order status: reserved
             'user_id' => $user->id,
         ]);
-    
-        // Save the order
         $order->save();
     
-        // Attach the selected product to the order
+        // Attach the product to the order
         $order->products()->attach($product->id);
     
-        // Decrement available_products count
+        // Decrease the available products count
         $product->available_products -= $request->input('num_products');
         $product->save();
     
-        // Redirect or return a response as needed
+        // Redirect back with a success message
         return redirect()->back()->with('success', 'Product reserved successfully.');
     }
     
+    
+        public function displayHistoryClient()
+    {
+        // Fetch all orders for the authenticated user and eager load related products
+        $orders = Order::where('user_id', Auth::user()->id)
+                        ->with('products')
+                        ->get();
+                        
+        // Return the view with the orders and their related products
+        return view('client.history', compact('orders'));
+    }
+
+    public function cancelOrder($id){
+        $order = Order::find($id);
+        $order->status = 0;
+        $order->save();
+        return redirect()->back()->with('success', 'Order cancelled successfully.');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -24,11 +24,21 @@
            
            
         </div>
+        @if ($products->isEmpty())
+            <div class="text-center">
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>There are no products yet.</p>
+                    <hr>
+                </div>
+            </div>
+        @else
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <p class="text-primary text-uppercase mb-2">// Our Products</p>
             <h1 class="display-6 mb-4">Explore Our Cultural Products</h1>
         </div>
         <div class="row g-4">
+            
             @foreach ($products as $product)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
@@ -62,7 +72,7 @@
                       @endif
             </div>
             @endforeach
-           
+            @endif
         </div>
     </div>
 </div>

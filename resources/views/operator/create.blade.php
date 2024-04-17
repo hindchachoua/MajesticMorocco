@@ -1,7 +1,19 @@
 @extends('layout.layout')
 
 @section('content')
-<div style="margin-top: 200px">
+<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
+    <div class="container text-center pt-5 pb-3">
+        <h1 class="display-4 text-white animated slideInDown mb-3">Create Product</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a class="text-white" href="{{ route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                <li class="breadcrumb-item text-primary active" aria-current="page">Create Product</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div>
 
     <h1 class="display-4 mb-4 animated slideInDown text-center">Create product</h1>
     <div id="success-alert" class="alert alert-success" style="display: none;">
