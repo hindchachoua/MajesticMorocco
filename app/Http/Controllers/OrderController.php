@@ -70,6 +70,16 @@ class OrderController extends Controller
         return redirect()->back()->with('success', 'Order cancelled successfully.');
     }
 
+    public function displayOrdersClient(){
+        $products = Product::all()->where('user_id', Auth::user()->id);
+        $orders = Order::all()->where('user_id', Auth::user()->id);
+        return view('operator.orders', compact('products', 'orders'));
+    }
+
+    public function displayAllOrders(){
+        $orders = Order::all()->where('status', 1);
+        return view('admin.order.cancel', compact('orders'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -89,9 +99,10 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(order $order)
+    public function show($id)
     {
-        return view('admin.order.show');
+        $order = Order::find($id);
+        return view('admin.order.show', compact('order'));
     }
 
     /**
@@ -118,7 +129,10 @@ class OrderController extends Controller
         //
     }
 
-    public function cancel(){
+    public function cancelAdmin($id){
+        $order = Order::find($id);
+        $order->status = 0;
+        $order->save();
         return view('admin.order.cancel');
     }
 }

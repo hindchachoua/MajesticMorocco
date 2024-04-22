@@ -30,6 +30,7 @@ Route::middleware(['auth', 'role:2'])->group(function () {
     Route::put('/updateProduct/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/operator/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::get('/showproduct/{id}', [ProductController::class, 'show'])->name('product.show');
+    Route::get('/ordersClient', [OrderController::class, 'displayOrdersClient'])->name('ordersClient');
 
 });
 
@@ -55,8 +56,10 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 
 
     //orders
-    Route::get('/cancelOrder', [OrderController::class, 'cancel'])->name('cancel');
-    Route::get('/order', [OrderController::class, 'show'])->name('showOrder');
+    Route::post('/cancelOrder/{id}', [OrderController::class, 'cancelOrder'])->name('cancelOrder');
+
+    // Route::post('/cancelOrder/{id}', [OrderController::class, 'cancelAdmin'])->name('cancelOrderAdmin');
+    Route::get('/order/{id}', [OrderController::class, 'show'])->name('showOrder');
 
     //access
     Route::get('/accessuser', [AuthManager::class, 'indexAccessUser'])->name('access.user');
@@ -66,6 +69,11 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     //validation
     Route::get('/validation', [ProductController::class, 'products'])->name('products.validation');
     Route::put('/validation/{id}', [ProductController::class, 'validation'])->name('validation');
+
+    //visualiser l'historique
+    Route::get('/historyAdmin', [OrderController::class, 'displayAllOrders'])->name('historyAdmin');
+    //cancel order
+    // Route::post('/cancelOrderAdmin/{id}', [OrderController::class, 'cancelAdmin'])->name('cancelOrder');
 
 });
 

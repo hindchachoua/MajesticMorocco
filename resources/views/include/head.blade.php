@@ -12,6 +12,7 @@
             @auth
                 @if (auth()->user()->role_id == 2)
                     <a href="{{ route('operator') }}" class="nav-item nav-link">Manage Product</a>
+                    <a href="{{ route('ordersClient')}}" class="nav-item nav-link">Orders</a>
                 @elseif(auth()->user()->role_id == 1)
                     <a href="{{ route('dashboard' )}}" class="nav-item nav-link">Dashboard</a>
                 @else

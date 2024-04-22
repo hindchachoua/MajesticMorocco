@@ -28,46 +28,21 @@
                 <h1 class="display-6 mb-4"></h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                @foreach ($orders as $order)
+                @foreach($order->products as $product)
                 <div class="testimonial-item bg-white rounded p-4">
                     <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('storage/images/profile.jpg')}}" alt="">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('storage/images/order.jpg')}}" alt="">
                         <div class="ms-4">
-                            <h5 class="mb-1"><a href="{{route('showOrder')}}">Client Name</a></h5>
-                            <span>Profession</span>
+                            <h5 class="mb-1"><a href="{{route('showOrder' , ['id' => $order->id])}}">{{$order->client->name}}</a></h5>
+                            <span>Product's title: {{ $product->title }}</span>
                         </div>
                     </div>
                     
                 </div>
-                <div class="testimonial-item bg-white rounded p-4">
-                    <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('storage/images/profile.jpg')}}" alt="">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="testimonial-item bg-white rounded p-4">
-                    <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('storage/images/profile.jpg')}}" alt="">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="testimonial-item bg-white rounded p-4">
-                    <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('storage/images/profile.jpg')}}" alt="">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <span>Profession</span>
-                        </div>
-                    </div>
-                    
-                </div>
+                @endforeach
+                @endforeach
+                
             </div>
             
         </div>

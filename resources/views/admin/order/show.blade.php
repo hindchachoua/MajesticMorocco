@@ -27,25 +27,28 @@
                             <h2 class="text-center mb-5" style="font-size: 50px; margin-top: -50px">The Order</h2>
                         </div>
                         
-                            
+                          {{-- @foreach ($orders as $order)   --}}
                         <div class="col-lg-6 col-12 mt-4 mt-lg-0" style="margin-left: 350px">
                             <div class="pricing-thumb">
                                 <div class="d-flex">
                                     <div >
                                         <h3 style="font-size: 28px; margin-top: -20px" ></h3>
             
-                                        <p><span style="font-weight: bold">Client Name:</span> </p>
+                                        <p><span style="font-weight: bold">Product's title: </span> <span>{{$order->products[0]->title}}</span> </p>
+                                        <p><span style="font-weight: bold">Product's description: </span>{{$order->products[0]->description}}</p>
+                                        <p><span style="font-weight: bold">Product's price: </span>{{$order->products[0]->price}}</p>
+
                                     </div>
                                 </div>
-                                <form action="" method="POST">
-                                  @csrf
-                                  
-                                  <input type="hidden" name="order_id" value="">
-                                  <button type="submit" class="btn btn-danger" style=" color: white">Cancel</button>
-                              </form>
-                              
+                                <form action="{{ route('cancelOrder', $order->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger">Annuler</button>
+      
+                                </form>
+                                
                             </div>
                         </div>
+                        {{-- @endforeach --}}
                         
                         
             
