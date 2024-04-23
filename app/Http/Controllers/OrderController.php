@@ -6,6 +6,9 @@ use App\Models\order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;    
+
+
 
 
 class OrderController extends Controller
@@ -54,12 +57,10 @@ class OrderController extends Controller
     
         public function displayHistoryClient()
     {
-        // Fetch all orders for the authenticated user and eager load related products
         $orders = Order::where('user_id', Auth::user()->id)
                         ->with('products')
                         ->get();
                         
-        // Return the view with the orders and their related products
         return view('client.history', compact('orders'));
     }
 
@@ -67,7 +68,11 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = 0;
         $order->save();
+        if(Auth::user()->role == 3){
         return redirect()->back()->with('success', 'Order cancelled successfully.');
+        }else{
+            return redirect()->route('historyAdmin')->with('success', 'Order cancelled successfully.');
+        }
     }
 
     public function displayOrdersClient(){
@@ -129,10 +134,10 @@ class OrderController extends Controller
         //
     }
 
-    public function cancelAdmin($id){
-        $order = Order::find($id);
-        $order->status = 0;
-        $order->save();
-        return view('admin.order.cancel');
-    }
+    // public function cancelAdmin($id){
+    //     $order = Order::find($id);
+    //     $order->status = 0;
+    //     $order->save();
+    //     return redirect()->back()->with('success', 'Order cancelled successfully.');
+    // }
 }

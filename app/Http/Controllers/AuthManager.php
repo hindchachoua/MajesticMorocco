@@ -28,13 +28,21 @@ class AuthManager extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
+    
         $credentials = $request->only('email', 'password');
+        $user = User::where('email', $request->email)->first();
+    
+        if ($user && $user->is_blocked == 1) {
+            return redirect("login")->with('error', 'Your account is blocked. Please contact support for assistance.');
+        }
+    
         if (Auth::attempt($credentials)) {
             return redirect('/');
         }
+        
         return redirect("login")->with('error', 'Login details are not valid');
     }
+    
 
     public function registerPost(Request $request){
         

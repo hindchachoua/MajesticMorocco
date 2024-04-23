@@ -56,9 +56,7 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 
 
     //orders
-    Route::post('/cancelOrder/{id}', [OrderController::class, 'cancelOrder'])->name('cancelOrder');
-
-    // Route::post('/cancelOrder/{id}', [OrderController::class, 'cancelAdmin'])->name('cancelOrderAdmin');
+    Route::post('/cancelOrderAdmin/{id}', [OrderController::class, 'cancelOrder'])->name('cancelOrderAdmin');
     Route::get('/order/{id}', [OrderController::class, 'show'])->name('showOrder');
 
     //access
@@ -72,8 +70,6 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 
     //visualiser l'historique
     Route::get('/historyAdmin', [OrderController::class, 'displayAllOrders'])->name('historyAdmin');
-    //cancel order
-    // Route::post('/cancelOrderAdmin/{id}', [OrderController::class, 'cancelAdmin'])->name('cancelOrder');
 
 });
 

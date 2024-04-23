@@ -22,7 +22,7 @@
                 <div style="margin-left: 30%; margin-top: 10%">
                     <div class="alert alert-warning" role="alert">
                         <h4 class="alert-heading">Warning!</h4>
-                        <p>There are no products yet.</p>
+                        <p>There are no products (not valid) yet.</p>
                         <hr>
                     </div>
                 </div>

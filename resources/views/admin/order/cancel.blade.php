@@ -21,31 +21,61 @@
             
 
     <!-- Testimonial Start -->
-    <div class="container-xxl bg-light my-6 py-6 pb-0">
+    <div class="container-xxl bg-light my-6 py-6 pb-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="text-primary text-uppercase mb-2">// Client's Order</p>
-                <h1 class="display-6 mb-4"></h1>
+                <h1 class="display-6 mb-4">Cancel Orders</h1>
             </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                @foreach ($orders as $order)
-                @foreach($order->products as $product)
-                <div class="testimonial-item bg-white rounded p-4">
-                    <div class="d-flex align-items-center mb-4">
-                        <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('storage/images/order.jpg')}}" alt="">
-                        <div class="ms-4">
-                            <h5 class="mb-1"><a href="{{route('showOrder' , ['id' => $order->id])}}">{{$order->client->name}}</a></h5>
-                            <span>Product's title: {{ $product->title }}</span>
+        @if ($orders->isEmpty())
+                <div>
+                    <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading">Info!</h4>
+                        <p>There are no orders (not valid) yet.</p>
+                        <hr>
+                    </div>
+                </div>
+            @else
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <p class="text-primary text-uppercase mb-2">// Client's Order</p>
+                    <h1 class="display-6 mb-4"></h1>
+                </div>
+            
+                @if (count($orders) > 1)
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    @foreach ($orders as $order)
+                    @foreach($order->products as $product)
+                    <div class="testimonial-item bg-white rounded p-2">
+                        <div class="d-flex align-items-center mb-2">
+                            <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('storage/images/order.jpg')}}" alt="" style="width: 50px; height: 50px;">
+                            <div class="ms-2">
+                                <h5 class="mb-0"><a href="{{route('showOrder' , ['id' => $order->id])}}">{{$order->client->name}}</a></h5>
+                                <span class="small">Product's title: {{ $product->title }}</span>
+                            </div>
                         </div>
                     </div>
-                    
+                    @endforeach
+                    @endforeach
+                </div>
+                @else
+                @foreach ($orders as $order)
+                @foreach($order->products as $product)
+                <div class="testimonial-item bg-white rounded p-2">
+                    <div class="d-flex align-items-center mb-2">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="{{asset('storage/images/order.jpg')}}" alt="" style="width: 50px; height: 50px;">
+                        <div class="ms-2">
+                            <h5 class="mb-0"><a href="{{route('showOrder' , ['id' => $order->id])}}">{{$order->client->name}}</a></h5>
+                            <span class="small">Product's title: {{ $product->title }}</span>
+                        </div>
+                    </div>
                 </div>
                 @endforeach
                 @endforeach
-                
+                @endif
+            
             </div>
             
-        </div>
+        @endif
     </div>
     <!-- Testimonial End -->
 
