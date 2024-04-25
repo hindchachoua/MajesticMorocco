@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
+    {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> --}}
+
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
      <!-- Favicon -->
      {{-- <link href="img/favicon.ico" rel="icon"> --}}
@@ -33,6 +35,8 @@
   </head>
   <body style="overflow-x: hidden">
     @include('include.head')
+    
+
     @yield('content')
 
 
@@ -74,6 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     <!-- Bootstrap JavaScript and jQuery -->
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('lib/wow/wow.min.js')}}"></script>
     <script src="{{asset('lib/easing/easing.min.js')}}"></script>

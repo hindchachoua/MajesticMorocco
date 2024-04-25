@@ -6,9 +6,7 @@ use App\Models\order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;    
-
-
+use Illuminate\Support\Facades\Log;
 
 
 class OrderController extends Controller
@@ -37,7 +35,8 @@ class OrderController extends Controller
     
         // Create a new order for the user
         $order = new Order([
-            'num_products' => $request->input('num_products'),
+            'quantity' => $request->input('num_products'),
+            'total_price' => $product->price * $request->input('num_products'),
             'status' => 1, // Order status: reserved
             'user_id' => $user->id,
         ]);
@@ -76,8 +75,8 @@ class OrderController extends Controller
     }
 
     public function displayOrdersClient(){
-        $products = Product::all()->where('user_id', Auth::user()->id);
-        $orders = Order::all()->where('user_id', Auth::user()->id);
+        $products = Product::all();
+        $orders = Order::all();
         return view('operator.orders', compact('products', 'orders'));
     }
 

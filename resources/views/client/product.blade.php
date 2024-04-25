@@ -18,6 +18,47 @@
 </div>
 <!-- Page Header End -->
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Your Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    @foreach($orders as $order)
+                        @foreach($order->products as $product)
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <img src="{{asset('storage/images/order.jpg')}}" class="img-fluid" alt="{{ $product->title }}" style="max-width: 100px;">
+                                </div>
+                                <div class="col-md-8">
+                                    <h5>{{ $product->title }}</h5>
+                                    <p>Price: ${{ $product->price }}</p>
+                                    <p>Quantity: {{ $order->quantity }}</p>
+                                    <p>Total: ${{ $order->total_price }}</p>
+                                </div>
+                                
+                            </div>
+                        @endforeach
+                    @endforeach
+                    <div class="col-md-8">
+                        <p>Total: $</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="container-xxl bg-light my-6 py-6 pt-0">
     <div class="container">
         <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 wow fadeInUp" data-wow-delay="0.1s">

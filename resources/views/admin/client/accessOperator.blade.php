@@ -22,7 +22,7 @@
             <div class="container-fluid px-4" style="margin-top: 15px">
                 <div class="bg-white text-center rounded p-4 wow fadeInUp">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">All Operators</h6>
+                        <h6 class="mb-0 display-6">All Operators</h6>
                     </div>
                     <!-- Add table-responsive class here -->
                     <div class="table-responsive">

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\region;
-use App\Models\categorie;   
+use App\Models\categorie;
+use App\Models\order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -155,7 +156,7 @@ class ProductController extends Controller
     }
 
     public function products(){
-        $products = Product::all()->where('is_Valid', 0);
+        $products = Product::all();
         return view('admin.product.validate', compact('products'));
     }
 
@@ -167,7 +168,8 @@ class ProductController extends Controller
     }
 
     public function displayProduct(){
+        $orders = order::all()->where('status', 1);
         $products = Product::all()->where('is_Valid', 1);
-        return view('client.product', compact('products'));
+        return view('client.product', compact('products', 'orders'));
     }
 }

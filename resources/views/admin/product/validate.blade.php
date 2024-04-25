@@ -15,14 +15,14 @@
 <div class="container-fluid px-4" >
     <div class="bg-white text-center rounded p-4 wow fadeInUp">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h2 class="mb-0">All Products (non valid)</h2>
+            <h2 class="mb-0 text-primary display-6 ">All Products</h2>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
             @if ($products->isEmpty())
                 <div style="margin-left: 30%; margin-top: 10%">
                     <div class="alert alert-warning" role="alert">
                         <h4 class="alert-heading">Warning!</h4>
-                        <p>There are no products (not valid) yet.</p>
+                        <p>There are no products yet.</p>
                         <hr>
                     </div>
                 </div>
@@ -37,6 +37,7 @@
                                 <h5 class="card-title">{{ $product->title }}</h5>
                                 <p class="card-text">{{ $product->description }}</p>
                                 
+                                @if ($product->is_Valid == 0)
                                 <form action="{{ route('validation', $product->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
@@ -44,6 +45,9 @@
                                         Valid
                                     </button>
                                 </form>
+                                @else
+                                <p class="alert alert-success" style="font-family: 'Times New Roman', Times, serif">Valid</p>
+                                @endif
                             </div>
                         </div>
                     </div>
