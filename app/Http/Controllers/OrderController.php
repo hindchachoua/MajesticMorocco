@@ -19,35 +19,42 @@ class OrderController extends Controller
         //
     }
 
-    public function reserve(Product $product, Request $request)
+    public function reserve(Request $request)
     {
         $user = Auth::user();
     
         // Validate the request data
         $request->validate([
-            'num_products' => 'required|integer|min:1',
+            'order_total_price' => 'required',
+            'order_products' => 'required|array',
+            'order_products.*.product_id' =>'required|integer',
+            'order_products.*.quantity' => 'required|integer|min:1',
+            'order_products.*.price' =>'required',
         ]);
-    
+        // dd($request->input('order_products'));
         // Check if the requested quantity is available
-        if ($product->available_products < $request->input('num_products')) {
-            return redirect()->back()->with('error', 'Requested quantity exceeds available products.');
-        }
+        // if ($product->available_products < $request->input('num_products')) {
+        //     return redirect()->back()->with('error', 'Requested quantity exceeds available products.');
+        // }
     
         // Create a new order for the user
         $order = new Order([
-            'quantity' => $request->input('num_products'),
-            'total_price' => $product->price * $request->input('num_products'),
-            'status' => 1, // Order status: reserved
+            'total_price' => $request->input('order_total_price'),
             'user_id' => $user->id,
         ]);
         $order->save();
     
         // Attach the product to the order
-        $order->products()->attach($product->id);
+        foreach ($request->input('order_products') as $orderProduct) {
+            $order->products()->attach($orderProduct['product_id'], [
+                'quantity' => $orderProduct['quantity'],
+            ]);
+            // Decrease the available products count
+            $product = Product::find($orderProduct['product_id']);
+            $product->available_products -= $orderProduct['quantity'];
+            $product->save();
+        }
     
-        // Decrease the available products count
-        $product->available_products -= $request->input('num_products');
-        $product->save();
     
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Product reserved successfully.');

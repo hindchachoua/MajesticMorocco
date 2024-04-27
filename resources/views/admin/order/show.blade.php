@@ -35,7 +35,7 @@
                                     <p><span style="font-weight: bold">Product's title: </span> <span>{{$order->products[0]->title}}</span> </p>
                                     <p><span style="font-weight: bold">Product's description: </span>{{$order->products[0]->description}}</p>
                                     <p><span style="font-weight: bold">Product's price: </span>{{$order->products[0]->price}}</p>
-                                    <p><span style="font-weight: bold">Product's quantity: </span>{{$order->num_products}}</p>
+                                    {{-- <p><span style="font-weight: bold">Product's quantity: </span>{{$order->order_products[0]->quantity}}</p> --}}
                                     <p><span style="font-weight: bold">Product's region: </span>{{$order->products[0]->region->name}}</p>
                                     <p><span style="font-weight: bold">Product's category: </span>{{$order->products[0]->category->name}}</p>
                                     <p><span style="font-weight: bold">Order's created at: </span>{{$order->created_at}}</p>

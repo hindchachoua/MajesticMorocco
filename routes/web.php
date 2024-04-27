@@ -74,11 +74,11 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 });
 
 
+Route::post('/user/reserve', [OrderController::class, 'reserve'])->name('user.reserve');
 Route::middleware('auth', 'role:3')->group(function () {
     Route::get('/products', [ProductController::class, 'displayProduct'])->name('products');
 
     Route::get('/showproduct/{id}', [ProductController::class, 'show'])->name('product.show');
-    Route::post('/user/reserve/{product}', [OrderController::class, 'reserve'])->name('user.reserve');
 
     //history
     Route::get('/history', [OrderController::class, 'displayHistoryClient'])->name('history');
