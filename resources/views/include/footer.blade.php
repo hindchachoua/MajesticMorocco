@@ -1,4 +1,4 @@
-<!-- Footer Start -->
+
 <div class="container-fluid bg-dark text-light footer" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
@@ -56,20 +56,13 @@
         </div>
     </div>
 </div>
-<!-- Footer End -->
 
-
-<!-- Copyright Start -->
 <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                 &copy; <a href="#">Majestic Morocco</a>
             </div>
-            <div class="col-md-6 text-center text-md-end">
-                Designed By <a href="https://htmlcodex.com">Hind Chachoua</a>
-            </div>
         </div>
     </div>
 </div>
-<!-- Copyright End -->

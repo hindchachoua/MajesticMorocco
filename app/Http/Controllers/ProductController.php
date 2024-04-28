@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\region;
+use App\Models\Region;
 use App\Models\categorie;
 use App\Models\order;
 use Illuminate\Http\Request;
@@ -168,8 +168,32 @@ class ProductController extends Controller
     }
 
     public function displayProduct(){
+        $regions = Region::all();
         $orders = order::all()->where('status', 1);
         $products = Product::all()->where('is_Valid', 1);
-        return view('client.product', compact('products', 'orders'));
+        return view('client.product', compact('products', 'orders', 'regions'));
     }
+    public function filter(Request $request) {
+        $regions = Region::all();
+        
+        $query = Product::query();
+    
+        if ($request->has('region')) {
+            $query->where('region_id', $request->region);
+        }
+        $products = $query->get();
+    
+        return view('client.product', compact('regions', 'products'));
+    }
+    public function search(Request $request) {
+        $query = Product::query();
+        $regions = Region::all();
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+    
+        $products = $query->get();
+        return view('client.product', compact('products', 'regions'));
+    }
+    
 }

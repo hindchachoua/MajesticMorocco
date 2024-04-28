@@ -9,9 +9,9 @@
         </div>
 
         <!-- Main content -->
-        <div class="col-md-9">
+        <div class="col-md-9" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
             <!-- Header -->
-            <div class="container-fluid page-header py-3 wow fadeIn" data-wow-delay="0.1s" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ asset('storage/images/produits-locals.jpg') }});">
+            <div class="container-fluid page-header py-3 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container text-center pt-5 pb-3">
                     <h1 class="display-4 text-white animated slideInDown mb-3">Edit Region</h1>
                     <nav aria-label="breadcrumb animated slideInDown">

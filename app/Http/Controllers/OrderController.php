@@ -81,11 +81,27 @@ class OrderController extends Controller
         }
     }
 
-    public function displayOrdersClient(){
-        $products = Product::all();
-        $orders = Order::all();
+    public function displayOrdersClient() {
+        $operator = Auth::user();
+        
+        // Get all products created by the operator
+        $products = $operator->products;
+    
+        if ($products->isNotEmpty()) {
+            // Get orders for those products
+            $productIds = $products->pluck('id');
+            $orders = Order::whereHas('products', function ($query) use ($productIds) {
+                $query->whereIn('products.id', $productIds);
+            })->get();
+        } else {
+            // If no products found, set $orders to an empty collection
+            $orders = collect();
+        }
+    
         return view('operator.orders', compact('products', 'orders'));
     }
+    
+    
 
     public function displayAllOrders(){
         $orders = Order::all()->where('status', 1);

@@ -31,6 +31,14 @@ Route::middleware(['auth', 'role:2'])->group(function () {
     Route::delete('/operator/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::get('/showproduct/{id}', [ProductController::class, 'show'])->name('product.show');
     Route::get('/ordersClient', [OrderController::class, 'displayOrdersClient'])->name('ordersClient');
+    
+    //cancel order
+    Route::post('/cancelOrderOperator/{id}', [OrderController::class, 'cancelOrder'])->name('cancelOrderOperator');
+    
+
+    //validation
+    // Route::get('/validationOrder', [ProductController::class, 'products'])->name('products.validation');
+    Route::put('/validationOrder/{id}', [OrderController::class, 'validationOrder'])->name('validationOrder.operator');
 
 });
 
@@ -85,4 +93,10 @@ Route::middleware('auth', 'role:3')->group(function () {
 
     //cancel order
     Route::post('/cancelOrder/{id}', [OrderController::class, 'cancelOrder'])->name('cancelOrder');
+
+    //filter products
+    Route::post('/filter', [ProductController::class, 'filter'])->name('filter');
+
+    //search
+    Route::post('/search', [ProductController::class, 'search'])->name('search');
 });

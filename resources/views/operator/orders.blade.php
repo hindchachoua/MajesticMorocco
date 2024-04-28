@@ -32,23 +32,57 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="h-100">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" >
+                <div class="h-100 shadow-lg">
                     <ul class="list-group">
                         @foreach($orders as $order)
-                        <li class="list-group-item d-flex justify-content-between align-items-center"  style="font-size: 1.2rem;">
-                          <span style="color: black" class="badge badge-pill">Number products: {{$order->num_products}}</span>
-                        
-                          
+                        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size: 1.2rem;">
+                            <span style="color: black" class="badge badge-pill"><span style=" color:rgb(141, 52, 0)">Total Price: </span>{{ $order->total_price }}</span>
+                            <ul class="list-group list-group-flush">
+                                @foreach ($order->products as $product)
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h5 class="mb-0 " style=" color:rgb(187, 68, 0)">{{ $product->title }}</h5>
+                                            {{-- @if($product->available_products == 0)
+                                            <p class="mb-0">Available Products: Full</p>
+                                            @else   
+                                            @endif --}}
+                                            <p class="mb-0">Available Products: {{ $product->available_products}}</p>
+                                            <p class="mb-0">Client: {{ $order->client->name }}</p>
+                                        </div>
+                                        <span class="badge badge-primary badge-pill">{{ $product->pivot->quantity }}</span>
+                                    </div>
+                                    
+                                </li>
+                                @endforeach
+                                @if($order->is_valid == 0)
+                                <form action="{{ route('validationOrder.operator', $order->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-success">
+                                        Valid
+                                    </button>
+                                </form>
+                                @else
+                                <p class="alert alert-success" style="font-family: 'Times New Roman', Times, serif">Valid</p>
+                                @endif
+                                {{-- @if($order->status == 1)
+                                    <form action="{{ route('cancelOrderOperator', $order->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-danger">Annuler</button>
+                                    </form>
+                                    @else
+                                    <p class="card-text"><span class="text-danger">annulée</span></p>
+                                    
+                                    @endif --}}
+                            </ul>
                         </li>
-
                         @endforeach
-                       
-                        </li>
-                      </ul>
-                    
+                    </ul>
                 </div>
             </div>
+            
             
         </div>
         

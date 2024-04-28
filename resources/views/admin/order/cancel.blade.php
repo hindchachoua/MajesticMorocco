@@ -8,7 +8,7 @@
     @include('include.sidebar')
     
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
         {{-- <div class="container-fluid page-header py-3 wow fadeIn" data-wow-delay="0.1s" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
             <div class="container text-center pt-5 pb-3">
                 <h1 class="display-4 text-white animated slideInDown mb-3">Cancel Order</h1>
@@ -21,21 +21,21 @@
             
 
     <!-- Testimonial Start -->
-    <div class="container-xxl bg-light my-6 py-6 pb-5">
+    <div class="container-xxl my-6 py-6 pb-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h1 class="display-6 mb-4">Cancel Orders</h1>
+                <h1 class="display-6 mb-4 text-primary">Cancel Orders</h1>
             </div>
         @if ($orders->isEmpty())
                 <div>
-                    <div class="alert alert-info" role="alert">
+                    <div class="alert alert-warning" role="alert">
                         <h4 class="alert-heading">Info!</h4>
                         <p>There are no orders (not valid) yet.</p>
                         <hr>
                     </div>
                 </div>
             @else
-            <div class="container">
+            <div class="container" >
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                     <p class="text-primary text-uppercase mb-2">// Client's Order</p>
                     <h1 class="display-6 mb-4"></h1>

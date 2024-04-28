@@ -40,11 +40,9 @@
                 @foreach($products as $product)
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item text-center rounded overflow-hidden">
-                        <a href="{{ route('product.show', ['id' => $product->id]) }}">
+                        {{-- <a href="{{ route('product.show', ['id' => $product->id]) }}"> --}}
                             <img class="img-fluid" src="{{ asset('images/' . $product->image)}}" alt="">
-                        </a>
-                        
-
+                        {{-- </a> --}}
                         <div class="team-text">
                             <div class="team-title">
                                 <h5>{{$product->title}}</h5>
