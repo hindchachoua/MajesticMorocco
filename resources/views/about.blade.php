@@ -2,7 +2,6 @@
 @section('title', 'Welcome')
     
 @section('content')
- <!-- Page Header Start -->
  <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
     <div class="container text-center pt-5 pb-3">
         <h1 class="display-4 text-white animated slideInDown mb-3">About Us</h1>
@@ -15,9 +14,6 @@
         </nav>
     </div>
 </div>
-<!-- Page Header End -->
-
-<!-- About Start -->
 <div class="container-xxl py-6">
     <div class="container">
         <div class="row g-5">
@@ -56,5 +52,4 @@
         </div>
     </div>
 </div>
-<!-- About End -->
 @endsection

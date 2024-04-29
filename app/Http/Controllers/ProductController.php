@@ -49,16 +49,14 @@ class ProductController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         
-        // Handle file upload
         if ($request->hasFile('image')) {
             $fileNameWithExt = $request->file('image')->getClientOriginalName();
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-            // Move the uploaded file to the public directory
             $request->file('image')->move(public_path('images'), $fileNameToStore);
         } else {
-            $fileNameToStore = 'produits-locals.jpg'; // Default image if no image is uploaded
+            $fileNameToStore = 'produits-locals.jpg';
         }
     
         $product = new Product();
@@ -69,7 +67,6 @@ class ProductController extends Controller
         $product->region_id = $request->region_id;
         $product->category_id = $request->category_id;
         $product->image = $fileNameToStore;
-        $product->is_Auto = $request->has('is_Auto') ? 0 : 1;
         $product->user_id = Auth::user()->id;
         $product->save();
         
@@ -102,10 +99,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        // Find the product by its ID
         $product = Product::find($request->id);
     
-        // Retrieve the current values from the database if the incoming request values are null
         $image = $request->image ?? $product->image;
         $category_id = $request->category_id ?? $product->category_id;
         $region_id = $request->region_id ?? $product->region_id;
@@ -116,17 +111,8 @@ class ProductController extends Controller
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-            // Move the uploaded file to the public directory
             $request->file('image')->move(public_path('images'), $fileNameToStore);
         } 
-
-        // if ($request->has('is_Auto')) {
-        //     $request->value('is_Auto', 1);
-        //     $is_Auto = 1;
-        // } else {
-        //     $request->value('is_Auto', 0);
-        //     $is_Auto = 0;
-        // }
         
         $product->update([
             'title' => $request->title,
@@ -139,7 +125,6 @@ class ProductController extends Controller
             'image' => $fileNameToStore
         ]);
     
-        // Redirect back with success message
         return redirect('/operator')->with('success', 'Product updated successfully.');
     }
     
@@ -169,31 +154,36 @@ class ProductController extends Controller
 
     public function displayProduct(){
         $regions = Region::all();
+        $categories = Categorie::all();
         $orders = order::all()->where('status', 1);
         $products = Product::all()->where('is_Valid', 1);
-        return view('client.product', compact('products', 'orders', 'regions'));
+        return view('client.product', compact('products', 'orders', 'regions', 'categories'));
     }
     public function filter(Request $request) {
         $regions = Region::all();
-        
+        $categories = Categorie::all();
         $query = Product::query();
     
         if ($request->has('region')) {
             $query->where('region_id', $request->region);
         }
+        if ($request->has('category')) {
+            $query->where('category_id', $request->category);
+        }
         $products = $query->get();
     
-        return view('client.product', compact('regions', 'products'));
+        return view('client.product', compact('regions', 'products', 'categories'));
     }
     public function search(Request $request) {
         $query = Product::query();
         $regions = Region::all();
+        $categories = Categorie::all();
         if ($request->has('search')) {
             $query->where('title', 'like', '%' . $request->search . '%');
         }
     
         $products = $query->get();
-        return view('client.product', compact('products', 'regions'));
+        return view('client.product', compact('products', 'regions', 'categories'));
     }
     
 }

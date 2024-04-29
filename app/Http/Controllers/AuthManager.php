@@ -82,11 +82,8 @@ class AuthManager extends Controller
     public function blockUser(Request $request, $userId)
     {
         $user = User::findOrFail($userId);
-    
-        // Toggle the is_blocked status
         $user->is_blocked = !$user->is_blocked;
         $user->save();
-    
         return redirect()->back()->with('success', 'User blocked/unblocked successfully');
     }
 

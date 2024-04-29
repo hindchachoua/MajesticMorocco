@@ -18,7 +18,6 @@ class StatistiqueController extends Controller
         $clients = User::where('role_id', 3)->count();
         $operators = User::where('role_id', 2)->count();
     
-        // Counts for categories, products, and regions
         $categoriesCount = $categories->count();
         $productsCount = $products->count();
         $regionsCount = $regions->count();

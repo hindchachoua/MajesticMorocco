@@ -11,21 +11,20 @@
         </div>
     </div>
     <div class="py-5" style="margin-left: 500px">
-                <div class="col-md-6 wow fadeInUp bg-light shadow p-5" data-wow-delay="0.1s">
-                    <div class=" text-center rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('images/' . $product->image)}}" alt="">
-
-                        <div class="team-text">
-                            <div class="team-title">
-                                <h5>{{$product->title}}</h5>
-                                <span>{{$product->price}}DH</span>
-                                <p>{{$product->description}}</p>
-                                <small>Available products:{{$product->available_products}}</small>
-                                <h6>category:{{$product->category->name}}</h6>
-                                <h6>region:{{$product->region->name}}</h6>
-                            </div>
-                        </div>
+        <div class="col-md-6 wow fadeInUp bg-light shadow p-5" data-wow-delay="0.1s">
+            <div class=" text-center rounded overflow-hidden">
+                <img class="img-fluid" src="{{ asset('images/' . $product->image)}}" alt="">
+                <div class="team-text">
+                    <div class="team-title">
+                        <h5>{{$product->title}}</h5>
+                        <span>{{$product->price}}DH</span>
+                        <p>{{$product->description}}</p>
+                        <small>Available products:{{$product->available_products}}</small>
+                        <h6>category:{{$product->category->name}}</h6>
+                        <h6>region:{{$product->region->name}}</h6>
                     </div>
                 </div>
-  </div>
+            </div>
+        </div>
+    </div>
 @endSection

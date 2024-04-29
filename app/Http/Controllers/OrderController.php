@@ -23,7 +23,6 @@ class OrderController extends Controller
     {
         $user = Auth::user();
     
-        // Validate the request data
         $request->validate([
             'order_total_price' => 'required',
             'order_products' => 'required|array',
@@ -31,32 +30,21 @@ class OrderController extends Controller
             'order_products.*.quantity' => 'required|integer|min:1',
             'order_products.*.price' =>'required',
         ]);
-        // dd($request->input('order_products'));
-        // Check if the requested quantity is available
-        // if ($product->available_products < $request->input('num_products')) {
-        //     return redirect()->back()->with('error', 'Requested quantity exceeds available products.');
-        // }
-    
-        // Create a new order for the user
         $order = new Order([
             'total_price' => $request->input('order_total_price'),
             'user_id' => $user->id,
         ]);
         $order->save();
     
-        // Attach the product to the order
         foreach ($request->input('order_products') as $orderProduct) {
             $order->products()->attach($orderProduct['product_id'], [
                 'quantity' => $orderProduct['quantity'],
             ]);
-            // Decrease the available products count
             $product = Product::find($orderProduct['product_id']);
             $product->available_products -= $orderProduct['quantity'];
             $product->save();
         }
     
-    
-        // Redirect back with a success message
         return redirect()->back()->with('success', 'Product reserved successfully.');
     }
     
@@ -84,17 +72,14 @@ class OrderController extends Controller
     public function displayOrdersClient() {
         $operator = Auth::user();
         
-        // Get all products created by the operator
         $products = $operator->products;
     
         if ($products->isNotEmpty()) {
-            // Get orders for those products
             $productIds = $products->pluck('id');
             $orders = Order::whereHas('products', function ($query) use ($productIds) {
                 $query->whereIn('products.id', $productIds);
             })->get();
         } else {
-            // If no products found, set $orders to an empty collection
             $orders = collect();
         }
     
@@ -156,10 +141,4 @@ class OrderController extends Controller
         //
     }
 
-    // public function cancelAdmin($id){
-    //     $order = Order::find($id);
-    //     $order->status = 0;
-    //     $order->save();
-    //     return redirect()->back()->with('success', 'Order cancelled successfully.');
-    // }
 }

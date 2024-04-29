@@ -37,7 +37,6 @@
     </div>
 </div>
 
-<!-- Facts Start -->
 <div class="container-xxl py-6">
     <div class="container">
         <div class="row g-4">
@@ -72,9 +71,6 @@
         </div>
     </div>
 </div>
-<!-- Facts End -->
-
- <!-- About Start -->
  <div class="container-xxl py-6">
     <div class="container">
         <div class="row g-5">
@@ -112,14 +108,9 @@
         </div>
     </div>
 </div>
-<!-- About End -->
-
-<!-- Product Start -->
 <div class="container-xxl bg-light my-6 py-6 pt-0">
     <div class="container">
         <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 wow fadeInUp" data-wow-delay="0.1s">
-           
-           
         </div>
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <p class="text-primary text-uppercase mb-2">// Our Products</p>
@@ -174,9 +165,6 @@
         </div>
     </div>
 </div>
-<!-- Product End -->
-
-<!-- Service Start -->
 <div class="container-xxl py-6">
     <div class="container">
         <div class="row g-5">
@@ -236,6 +224,5 @@
         </div>
     </div>
 </div>
-<!-- Service End -->
 
 @endSection 

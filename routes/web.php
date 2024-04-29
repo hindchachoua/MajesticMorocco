@@ -37,7 +37,6 @@ Route::middleware(['auth', 'role:2'])->group(function () {
     
 
     //validation
-    // Route::get('/validationOrder', [ProductController::class, 'products'])->name('products.validation');
     Route::put('/validationOrder/{id}', [OrderController::class, 'validationOrder'])->name('validationOrder.operator');
 
 });

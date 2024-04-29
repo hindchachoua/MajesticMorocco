@@ -3,7 +3,6 @@
 
 <div>
     <div class="row">
-        <!-- Sidebar -->
         <div class="col-md-3">
         @include('include.sidebar')
         
