@@ -11,10 +11,10 @@
                 @if(count($regions) == 12)
                 <div></div>
                 @else
-                <a href="{{ route('addregion')}}" class="btn btn-primary wow fadeInUp mt-3">Add Region</a>
+                <a href="{{ route('addregion')}}" class="btn btn-primary  mt-3">Add Region</a>
                 @endif
                 <div class="container-fluid px-4">
-                    <div class="bg-white text-center rounded p-4 wow fadeInUp">
+                    <div class="bg-white text-center rounded p-4 ">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <h3 class="mb-0">All Regions</h3>
                         </div>

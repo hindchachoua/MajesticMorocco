@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-    <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+<nav class="navbar bg-dark navbar-expand-lg navbar-dark py-3 py-lg-0" >
+    <a href="" class="navbar-brand ms-4 ms-lg-0">
         <h1 class="text-primary m-0">{{ config('app.name') }}</h1>
     </a>
-    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <button type="button" class="navbar-toggler me-4" >
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -42,7 +42,7 @@
                 @endauth
             </ul>
         </div>
-        <!-- User info and auth buttons for large screens -->
+        
         <div class="d-none d-lg-flex">
             <span class="navbar-text me-3">
                 @auth

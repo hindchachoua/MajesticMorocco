@@ -12,11 +12,15 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/login', [AuthManager::class, 'login'])->name('login');
-Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post');
-Route::get('/register', [AuthManager::class, 'register'])->name('register');
-Route::post('/register', [AuthManager::class, 'registerPost'])->name('register.post');
+Route::fallback(function () {
+    return '404 Not Found';
+});
+    
 Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
+Route::get('/login', [AuthManager::class, 'login'])->name('login');
+Route::post('/loginpost', [AuthManager::class, 'loginPost'])->name('login.post');
+Route::get('/register', [AuthManager::class, 'register'])->name('register');
+Route::post('/registerpost', [AuthManager::class, 'registerPost'])->name('register.post');
 Route::get('/about' , function () {
     return view('about');
 })->name('about');
@@ -38,6 +42,8 @@ Route::middleware(['auth', 'role:2'])->group(function () {
 
     //validation
     Route::put('/validationOrder/{id}', [OrderController::class, 'validationOrder'])->name('validationOrder.operator');
+
+
 
 });
 
@@ -78,6 +84,8 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     //visualiser l'historique
     Route::get('/historyAdmin', [OrderController::class, 'displayAllOrders'])->name('historyAdmin');
 
+    
+
 });
 
 
@@ -98,4 +106,7 @@ Route::middleware('auth', 'role:3')->group(function () {
 
     //search
     Route::post('/search', [ProductController::class, 'search'])->name('search');
+
+    
+
 });
