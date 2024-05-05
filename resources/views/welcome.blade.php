@@ -116,7 +116,7 @@
     <div class="container">
         <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 " data-wow-delay="0.1s">
         </div>
-        <div class="text-center mx-auto mb-5 " data-wow-delay="0.1s" style="max-width: 500px;">
+        <div class="text-center mx-auto mb-5 " style="max-width: 500px;">
             <p class="text-primary text-uppercase mb-2">// Our Products</p>
             <h1 class="display-6 mb-4">Explore The Categories Of Our Cultural Products</h1>
         </div>

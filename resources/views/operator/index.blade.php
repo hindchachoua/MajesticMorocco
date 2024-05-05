@@ -2,7 +2,7 @@
 @section('title', 'Welcome')
     
 @section('content')
-<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
+<div class="container-fluid page-header py-6 wow fadeIn" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
     <div class="container text-center pt-5 pb-3">
         <h1 class="display-4 text-white animated slideInDown mb-3">Manage Product</h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -28,7 +28,7 @@
             @else
                 <a href="{{ route('addproduct')}}" class="btn btn-primary wow fadeInUp">Add Product</a>
                 <div class="container">
-                    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <div class="text-center mx-auto mb-5 wow fadeInUp" style="max-width: 500px;">
                         <p class="text-primary text-uppercase mb-2">// Your Products</p>
                         <h1 class="display-6 mb-4">We offer you to manage your products</h1>
                     </div>

@@ -24,7 +24,7 @@
                                 </div>
                         @else
                             <div class="container" >
-                                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" >
+                                <div class="text-center mx-auto mb-5 wow fadeInUp" >
                                     <p class="text-primary text-uppercase mb-2">// Client's Order</p>
                                     <h1 class="display-6 mb-4"></h1>
                                 </div>

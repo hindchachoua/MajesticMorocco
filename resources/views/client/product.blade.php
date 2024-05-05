@@ -3,7 +3,7 @@
     
 @section('content')
 
-<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/souk.webp')}})">
+<div class="container-fluid page-header py-6 wow fadeIn" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/souk.webp')}})">
     <div class="container text-center pt-5 pb-3">
         <h1 class="display-4 text-white animated slideInDown mb-3">Products</h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -110,7 +110,7 @@
             </div>
         </div>
         @else
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" style="max-width: 500px;">
                 <p class="text-primary text-uppercase mb-2">// Our Products</p>
                 <h1 class="display-6 mb-4">Explore Our Cultural Products</h1>
             </div>
