@@ -15,9 +15,9 @@
                 </div>
             </div>
             <div class="container-fluid px-4">
-                <a href="{{ route('categorie.add')}}" class="btn btn-primary wow fadeInUp my-3">Add Category</a>
+                <a href="{{ route('categorie.add')}}" class="btn btn-primary  my-3">Add Category</a>
                 <div class="container-fluid px-4">
-                    <div class="bg-white text-center rounded p-4 wow fadeInUp">
+                    <div class="bg-white text-center rounded p-4 ">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <h3 class="mb-0">All Categories</h3>
                         </div>

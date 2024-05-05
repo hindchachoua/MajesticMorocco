@@ -1,12 +1,12 @@
 @extends('layout.layout3')
 @section('content')
 
-    <div class="row">
+    <div class="row" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
         <div class="col-md-3">
         @include('include.sidebar')
         
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 mt-3">
             <div class="container-fluid px-4">
                 @if(count($regions) == 12)
                 <div></div>
@@ -16,7 +16,7 @@
                 <div class="container-fluid px-4">
                     <div class="bg-white text-center rounded p-4 ">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h3 class="mb-0">All Regions</h3>
+                            <h3 class="mb-0">All Regions :</h3>
                         </div>
                         <div class="table-responsive">
                             <table class="table text-start align-middle table-bordered table-hover mb-5">

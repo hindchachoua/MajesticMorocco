@@ -1,4 +1,4 @@
-<nav class="navbar bg-dark navbar-expand-lg navbar-dark py-3 py-lg-0" >
+<nav class="navbar navbari bg-dark navbar-expand-lg navbar-dark py-3 py-lg-0 fixed" >
     <a href="" class="navbar-brand ms-4 ms-lg-0">
         <h1 class="text-primary m-0">{{ config('app.name') }}</h1>
     </a>

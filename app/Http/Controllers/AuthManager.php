@@ -33,7 +33,7 @@ class AuthManager extends Controller
         $user = User::where('email', $request->email)->first();
     
         if ($user && $user->is_blocked == 1) {
-            return redirect("login")->with('error', 'Your account is blocked. Please contact support for assistance.');
+            return redirect("login")->with('error', 'Your account is blocked.');
         }
     
         if (Auth::attempt($credentials)) {
