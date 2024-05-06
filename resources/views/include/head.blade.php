@@ -20,7 +20,7 @@
                     <a href="{{ route('history')}}" class="nav-item nav-link">History</a>
                     
                     <button style="width: 40%; height: 40%;margin-top: 6%" type="button"  class="btn btn-primary me-3 d-lg-block "  data-toggle="modal" data-target="#exampleModal">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">1</span>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger"></span>
                       </button>
                 @endif
             @endauth

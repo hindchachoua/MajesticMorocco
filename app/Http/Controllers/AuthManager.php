@@ -55,7 +55,7 @@ class AuthManager extends Controller
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['password'] = bcrypt($request->password);
-        $data['role_id'] = $request->has('checkbox') ? $request->checkbox : null;
+        $data['role_id'] = $request->has('checkbox') ? $request->checkbox : 3;
 
         
         $user = User::create($data);

@@ -3,10 +3,10 @@
     
 @section('content')
 
-<div class="container-fluid page-header py-6 wow fadeIn" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/souk.webp')}})">
+<div class="container-fluid page-header py-6 " style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/souk.webp')}})">
     <div class="container text-center pt-5 pb-3">
-        <h1 class="display-4 text-white animated slideInDown mb-3">Products</h1>
-        <nav aria-label="breadcrumb animated slideInDown">
+        <h1 class="display-4 text-white  mb-3">Products</h1>
+        <nav aria-label="breadcrumb ">
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
@@ -57,7 +57,7 @@
 
 <div class="container-xxl bg-light my-6 py-6 pt-0">
     <div class="container">
-        <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 wow fadeInUp  shadow-lg" data-wow-delay="0.1s">
+        <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0  shadow-lg" data-wow-delay="0.1s">
             <div class="row">
                 <div class="col-md-6">
                     <form action="{{ route('filter')}}" method="POST">
@@ -88,7 +88,7 @@
             </div>
         </div>
         
-        <div class="col-md-6 wow fadeInUp" style="margin-left: 25%;margin-bottom: 10%;">
+        <div class="col-md-6 " style="margin-left: 25%;margin-bottom: 10%;">
             <form action="{{ route('search')}}" method="POST">
                 @csrf
                 <label for="search" style="font-weight: bold">Search by Title:</label>
@@ -110,13 +110,13 @@
             </div>
         </div>
         @else
-            <div class="text-center mx-auto mb-5 wow fadeInUp" style="max-width: 500px;">
+            <div class="text-center mx-auto mb-5 " style="max-width: 500px;">
                 <p class="text-primary text-uppercase mb-2">// Our Products</p>
                 <h1 class="display-6 mb-4">Explore Our Cultural Products</h1>
             </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             @foreach ($products as $product)
-                <div class="col wow fadeInUp shadow-sm">
+                <div class="col shadow-sm">
                     <div class="card h-100 border border-primary rounded">
                         <img src="{{ asset('images/' . $product->image)}}" class="card-img-top" alt="Product Image">
                         <div class="card-body d-flex flex-column">

@@ -2,9 +2,9 @@
 @section('title', 'Welcome')
     
 @section('content')
-<div class="container-fluid page-header py-6 wow fadeIn" style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
+<div class="container-fluid page-header py-6 " style="background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url({{asset('storage/images/produits-locals.jpg')}})">
     <div class="container text-center pt-5 pb-3">
-        <h1 class="display-4 text-white animated slideInDown mb-3">Manage Product</h1>
+        <h1 class="display-4 text-white mb-3">Manage Product</h1>
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a class="text-white" href="{{ route('home')}}">Home</a></li>
@@ -21,20 +21,20 @@
                     <div class="alert alert-info" role="alert">
                         <h4 class="alert-heading">Warning!</h4>
                         <p>There are no products yet.</p>
-                        <a href="{{ route('addproduct')}}" class="btn btn-primary wow fadeInUp">Add Product</a>
+                        <a href="{{ route('addproduct')}}" class="btn btn-primary ">Add Product</a>
                         <hr>
                     </div>
                 </div>
             @else
-                <a href="{{ route('addproduct')}}" class="btn btn-primary wow fadeInUp">Add Product</a>
+                <a href="{{ route('addproduct')}}" class="btn btn-primary ">Add Product</a>
                 <div class="container">
-                    <div class="text-center mx-auto mb-5 wow fadeInUp" style="max-width: 500px;">
+                    <div class="text-center mx-auto mb-5 " style="max-width: 500px;">
                         <p class="text-primary text-uppercase mb-2">// Your Products</p>
                         <h1 class="display-6 mb-4">We offer you to manage your products</h1>
                     </div>
                     <div class="row g-4">
                         @foreach($products as $product)
-                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="col-lg-3 col-md-6 " data-wow-delay="0.1s">
                             <div class="team-item text-center rounded overflow-hidden">
                                     <img class="img-fluid" src="{{ asset('images/' . $product->image)}}" alt="">
                                 <div class="team-text">
