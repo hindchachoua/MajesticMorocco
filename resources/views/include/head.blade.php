@@ -1,11 +1,13 @@
-<nav class="navbar navbari bg-dark navbar-expand-lg navbar-dark py-3 py-lg-0 fixed" >
+<nav class="navbar navbari bg-dark navbar-expand-lg navbar-dark fixed" >
+    <div class="container " style=" margin-left: 10%; margin-right: 10%">
     <a href="" class="navbar-brand ms-4 ms-lg-0">
         <h1 class="text-primary m-0">{{ config('app.name') }}</h1>
     </a>
     <button type="button" class="navbar-toggler me-4" >
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="collapse navbar-collapse" i>
+        
         <div class="navbar-nav mx-auto p-4 p-lg-0">
             <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
             <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
@@ -25,6 +27,8 @@
                 @endif
             @endauth
         </div>
+    </div>
+    </div>
         <div class="dropdown d-lg-none">
             <button class="btn btn-primary dropdown-toggle" type="button" id="authDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 @auth
