@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" i>
         
         <div class="navbar-nav mx-auto p-4 p-lg-0">
-            <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
+            <a href="{{ route('home') }}" class="nav-item nav-link active">Welcome</a>
             <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
             @auth
                 @if (auth()->user()->role_id == 2)
